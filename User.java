@@ -88,8 +88,8 @@ public class User
    Changes the password
    @param newPassword the new password
    */
-   public void setPassword(String newUsername)
+   public void setPassword(String newPassword)
    {
-      this.username = newUsername;
+      this.password = newPassword;
    }
 }
