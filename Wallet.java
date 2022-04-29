@@ -50,32 +50,24 @@ public class Wallet
    quantity of EOS
    */
    private double qtyEOS;
-   
+  
    /**
    Constructor that creates a wallet with attributes
-   @param qtyUSD  number of USD in wallet
-   @param qtyBTC  number of BTC in wallet
-   @param qtyETH  number of ETH in wallet
-   @param qtyLTC  number of LTC in wallet
-   @param qtyDOGE number of DOGE in wallet
-   @param qtyBCH  number of BCH in wallet
-   @param qtyXRP  number of XRP in wallet
-   @param qtyTRX  number of TRX in wallet
-   @param qtyEOS  number of EOS in wallet
    */
-   public Wallet (double qtyUSD, double qtyBTC, double qtyETH, double qtyLTC, double qtyDOGE, double qtyBCH, double qtyXRP, double qtyTRX, double qtyEOS)
-   {
-      this.qtyUSD = qtyUSD;
-      this.qtyBTC = qtyBTC;
-      this.qtyETH = qtyETH;
-      this.qtyLTC = qtyLTC;
-      this.qtyDOGE = qtyDOGE;
-      this.qtyBCH = qtyBCH;
-      this.qtyXRP = qtyXRP;
-      this.qtyTRX = qtyTRX;
-      this.qtyEOS = qtyEOS;
-   }
-   
+//    public Wallet(); 
+//    {
+//       this.qtyUSD = 0;
+//       this.qtyBTC = 0;
+//       this.qtyETH = 0;
+//       this.qtyLTC = 0;
+//       this.qtyDOGE = 0;
+//       this.qtyBCH = 0;
+//       this.qtyXRP = 0;
+//       this.qtyTRX = 0;
+//       this.qtyEOS = 0;
+//       //this.walletAddress = walletAddress;
+//    }
+ 
    /**
    default constructor for a wallet with all attributes
    */
@@ -90,7 +82,9 @@ public class Wallet
       this.qtyXRP = 0.0;
       this.qtyTRX = 0.0;
       this.qtyEOS = 0.0;
+     // this.walletAddress = "";
    }
+   
    //getters
    /**
    get the quantity of USD
@@ -173,6 +167,25 @@ public class Wallet
       return this.qtyEOS;
    }
    
+   /**
+   get the wallet address of the user's wallet
+   @return walletAddress in string
+   */
+   
+//    public String getWalletAddress()
+//    {
+//       return this.walletAddress;
+//    }
+   
+   //setters
+   /**
+   Changes money
+   @param amount the money that is being changed in the wallet
+   */
+   public void changeMoney(double amount)
+   {
+      this.qtyUSD += amount;
+   }
    
    //methods
    /**
@@ -182,10 +195,41 @@ public class Wallet
    */
    public void buyCrypto(String crypto, double amount)
    {
-      String currency = "";
-      currency = "qty" + "crypto";
+      this.qtyUSD -= amount;      
+      switch(crypto)
+      {
+         case "BTC":
+         this.qtyBTC += amount;
+         break;
+         
+         case "ETH":
+         this.qtyETH += amount;
+         break;
       
-      this.qtyUSD -= amount;
-      this. += amount;
+         case "LTC":
+         this.qtyLTC += amount;
+         break;
+      
+         case "DOGE":
+         this.qtyDOGE += amount;
+         break;
+      
+         case "BCH":
+         this.qtyBCH += amount;
+         break;
+      
+         case "XRP":
+         this.qtyXRP += amount;
+         break;
+      
+         case "TRX":
+         this.qtyTRX += amount;
+         break;
+      
+         case "EOS":
+         this.qtyEOS += amount;
+         break;
+      }
+
    }
 }
