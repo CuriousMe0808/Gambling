@@ -168,6 +168,12 @@ public class Blackjack {
 
         } while (move.equals("yes"));
     }
+    
+    /**
+    Converts numeric values of face cards into letters 
+    @param cardVal the numerical value of the card
+    @return the display value of the card
+    */
     public static String numericToDisplay(int cardVal) {
         //this method given the numeric identity of a card returns its display value(11 returns J, 12 returns Q, etc.)
         if (cardVal >= 2 && cardVal <= 10) {
