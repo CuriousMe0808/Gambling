@@ -50,15 +50,7 @@ public class Wallet
    quantity of EOS
    */
    private double qtyEOS;
-   
-   /**
-   Wallet address
-   */
-  // private String walletAddress;
-   
-   /**
-   
-   */
+  
    /**
    Constructor that creates a wallet with attributes
    */
@@ -203,9 +195,7 @@ public class Wallet
    */
    public void buyCrypto(String crypto, double amount)
    {
-      String currency = "";      
-      this.qtyUSD -= amount;
-      
+      this.qtyUSD -= amount;      
       switch(crypto)
       {
          case "BTC":
@@ -240,5 +230,6 @@ public class Wallet
          this.qtyEOS += amount;
          break;
       }
+
    }
 }
