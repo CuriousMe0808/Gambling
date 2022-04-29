@@ -25,7 +25,7 @@ public class Wallet
    /**
    quantity of DOGE
    */
-   private double qtyDODGE;
+   private double qtyDOGE;
    
    /**
    quantity of BCH
