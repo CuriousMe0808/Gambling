@@ -10,7 +10,7 @@ public class Wallet
    /**
    quantity of USD
    */
-   private double USD;
+   private double qtyUSD;
    /**
    quantity of BTC
    */
@@ -63,7 +63,7 @@ public class Wallet
    @param qtyTRX  number of TRX in wallet
    @param qtyEOS  number of EOS in wallet
    */
-   public Wallet (double USD, double qtyBTC, double qtyETH, double qtyLTC, double qtyDOGE, double qtyBCH, double qtyXRP, double qtyTRX, double qtyEOS) 
+   public Wallet (double qtyUSD, double qtyBTC, double qtyETH, double qtyLTC, double qtyDOGE, double qtyBCH, double qtyXRP, double qtyTRX, double qtyEOS)
    {
       this.qtyUSD = qtyUSD;
       this.qtyBTC = qtyBTC;
@@ -186,6 +186,6 @@ public class Wallet
       currency = "qty" + "crypto";
       
       this.qtyUSD -= amount;
-      this.currency += amount;
+      this. += amount;
    }
 }
