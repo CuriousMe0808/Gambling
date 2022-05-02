@@ -290,5 +290,6 @@ public class Wallet
          this.qtyEOS += amount;
          break;
       }
+
    }
 }

@@ -8,7 +8,7 @@
 public class UserInterface {
     public static void main(String[] args) {
         while(true){
-            
+
         }
 
 
