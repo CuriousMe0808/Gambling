@@ -52,46 +52,60 @@ public class Wallet
    private double qtyEOS;
    
    /**
-   Wallet address
+   1 BTC = 1000 USD for conversion
    */
-  // private String walletAddress;
+   private double BTC_CONVERSION = 1000;
    
    /**
-   
+   1 ETH = 500 USD for conversion
    */
+   private double ETH_CONVERSION = 500;
+   
+   /**
+   1 LTC = 200 USD for conversion
+   */
+   private double LTC_CONVERSION = 200;
+   
+   /**
+   1 DOGE = 200 USD for conversion
+   */
+   private double DOGE_CONVERSION = 100;
+   
+   /**
+   1 BCH = 200 USD for conversion
+   */
+   private double BCH_CONVERSION = 70;
+   
+   /**
+   1 XRP = 200 USD for conversion
+   */
+   private double XRP_CONVERSION = 50;
+   
+   /**
+   1 TRX = 200 USD for conversion
+   */
+   private double TRX_CONVERSION = 40;
+   
+   /**
+   1 EOS = 200 USD for conversion
+   */
+   private double EOS_CONVERSION = 30;
+  
    /**
    Constructor that creates a wallet with attributes
    */
-//    public Wallet(); 
-//    {
-//       this.qtyUSD = 0;
-//       this.qtyBTC = 0;
-//       this.qtyETH = 0;
-//       this.qtyLTC = 0;
-//       this.qtyDOGE = 0;
-//       this.qtyBCH = 0;
-//       this.qtyXRP = 0;
-//       this.qtyTRX = 0;
-//       this.qtyEOS = 0;
-//       //this.walletAddress = walletAddress;
-//    }
- 
-   /**
-   default constructor for a wallet with all attributes
-   */
-   public Wallet()
-   {
-      this.qtyUSD = 0.0;
-      this.qtyBTC = 0.0;
-      this.qtyETH = 0.0;
-      this.qtyLTC = 0.0;
-      this.qtyDOGE = 0.0;
-      this.qtyBCH = 0.0;
-      this.qtyXRP = 0.0;
-      this.qtyTRX = 0.0;
-      this.qtyEOS = 0.0;
-     // this.walletAddress = "";
-   }
+    public Wallet() 
+    {
+       this.qtyUSD = 0;
+       this.qtyBTC = 0;
+       this.qtyETH = 0;
+       this.qtyLTC = 0;
+       this.qtyDOGE = 0;
+       this.qtyBCH = 0;
+       this.qtyXRP = 0;
+       this.qtyTRX = 0;
+       this.qtyEOS = 0;
+    }
    
    //getters
    /**
@@ -175,15 +189,6 @@ public class Wallet
       return this.qtyEOS;
    }
    
-   /**
-   get the wallet address of the user's wallet
-   @return walletAddress in string
-   */
-   
-//    public String getWalletAddress()
-//    {
-//       return this.walletAddress;
-//    }
    
    //setters
    /**
@@ -201,11 +206,56 @@ public class Wallet
    @param crypto the type of crypto currency being bought
    @param amount the amount of crypto currency being bought
    */
-   public void buyCrypto(String crypto, double amount)
+   public void buyCrypto(String crypto, double amount, boolean exchange)
    {
-      String currency = "";      
-      this.qtyUSD -= amount;
+      if (exchange == true)
+      {
+         this.qtyUSD -= amount;
+      }
       
+      switch(crypto)
+      {
+         case "BTC":
+         this.qtyBTC += amount / BTC_CONVERSION;
+         break;
+         
+         case "ETH":
+         this.qtyETH += amount / ETH_CONVERSION;
+         break;
+      
+         case "LTC":
+         this.qtyLTC += amount / LTC_CONVERSION;
+         break;
+      
+         case "DOGE":
+         this.qtyDOGE += amount / DOGE_CONVERSION;
+         break;
+      
+         case "BCH":
+         this.qtyBCH += amount / BCH_CONVERSION;
+         break;
+      
+         case "XRP":
+         this.qtyXRP += amount / XRP_CONVERSION;
+         break;
+      
+         case "TRX":
+         this.qtyTRX += amount / TRX_CONVERSION;
+         break;
+      
+         case "EOS":
+         this.qtyEOS += amount / EOS_CONVERSION;
+         break;
+      }
+   }
+   
+   /**
+   Changes the amount of money in the wallet, useful for when moving crypto between wallet and games
+   @param crypto the amount of crypto currency
+   @param amount the amount of crypto currency 
+   */
+   public void changeCrypto(String crypto, double amount)
+   {
       switch(crypto)
       {
          case "BTC":
