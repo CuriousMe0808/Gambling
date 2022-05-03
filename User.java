@@ -4,6 +4,10 @@ Name: Kevin Zhou
 Date: April 27, 2022
 Description: user information
 */
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class User
 {
    //attributes
@@ -23,6 +27,10 @@ public class User
    */
    private String accountID;
    
+   //this is the wallet class
+   private Wallet wallet;
+   
+   
    /**
    Constructor that creates a user with attributes. 
    @param   username    username of the user, can be changed 
@@ -34,6 +42,7 @@ public class User
       this.username = username;
       this.password = password;
       this.accountID = accountID;
+      this.wallet = new Wallet();
    }
    
    /**
@@ -92,4 +101,43 @@ public class User
    {
       this.password = newPassword;
    }
+   
+   /**
+   Saves user's information (______)
+   */
+   public void saveFile()
+   {
+      try 
+      {
+         String fileName = "User" + accountID + ".txt";
+         File mySave = new File(fileName);
+         if (mySave.createNewFile()) 
+         {
+            System.out.println("File created: " + mySave.getName());
+         } 
+         else 
+         {
+            System.out.println("File already exists.");
+         }
+         
+         Writer writer = new BufferedWriter(new FileWriter(fileName));
+         writer.write("Username: " + this.username + "\n");
+         writer.write("Password: " + this.password + "\n");
+         writer.write("USD: $" + wallet.getQtyUSD() + "\n");
+         writer.write("BTC: " + wallet.getQtyBTC() + "\n");
+         writer.write("ETH: " + wallet.getQtyETH() + "\n");
+         writer.write("LTC: " + wallet.getQtyLTC() + "\n");
+         writer.write("DOGE: " + wallet.getQtyDOGE() + "\n");
+         writer.write("BCH: " + wallet.getQtyBCH() + "\n");
+         writer.write("XRP: " + wallet.getQtyXRP() + "\n");
+         writer.write("TRX: " + wallet.getQtyTRX() + "\n");
+         writer.write("EOS: " + wallet.getQtyEOS() + "\n");
+         writer.close();
+      } 
+      catch (IOException e) 
+      {
+         System.out.println("An error occurred.");
+      }
+   }
+
 }
