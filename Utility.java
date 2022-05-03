@@ -22,7 +22,7 @@ public final class Utility
    generate unique account id
    @return a String value for the account ID
    */
-   public static String getAccountID()
+   public static String generateAccountID()
    {
       return String.valueOf(++idCounter);
    }
