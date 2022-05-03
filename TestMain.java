@@ -32,7 +32,7 @@ public class TestMain
 
          if (masterList.get("kevin.zhou3@student.tdsb.on.ca") == null)
          {
-            masterList.put("kevin.zhou3@student.tdsb.on.ca", new String[]{"OWARC", Utility.getAccountID()});
+            masterList.put("kevin.zhou3@student.tdsb.on.ca", new String[]{"OWARC", Utility.generateAccountID()});
             Utility.saveMaster(masterList);
 
          }
@@ -44,7 +44,7 @@ public class TestMain
          
          if (masterList.get("foo") == null)
          {
-            masterList.put("foo", new String[]{"Wind", Utility.getAccountID()});
+            masterList.put("foo", new String[]{"Wind", Utility.generateAccountID()});
          }
         
          //Utility.saveMaster(masterList);
