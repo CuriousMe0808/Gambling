@@ -1,25 +1,52 @@
+import java.util.Scanner;
+import java.io.*;
+import java.util.HashMap;
+
 public class TestMain
 {
    public static void main(String[] args)
    {
       //variables
-      User edwin = new User("EdwinPog", "kekw", "42069");
-      Wallet stuff = new Wallet();
-      //String output;
+      Scanner sc = new Scanner(System.in);
+      String inputUsername;
+      String inputPassword;
+      //BufferedReader reader = new BufferedReader(new FileReader());
       
-      System.out.println(edwin.getUsername());
-      System.out.println(edwin.getPassword());
-      System.out.println(edwin.getAccountID());
       
-      //adds 20 dollars
-      System.out.println(stuff.getQtyBTC());
-      stuff.changeMoney(20);
-      System.out.println(stuff.getQtyUSD());
+//       System.out.println("Enter username: ");
+//       inputUsername = sc.nextLine();
+//       System.out.println("Enter password: ");
+//       inputPassword = sc.nextLine();
       
-      //buy 4 doge with 4 dollars
-      stuff.buyCrypto("DOGE", 4);
-      System.out.println(stuff.getQtyDOGE());
-      System.out.println(stuff.getQtyUSD());
       
+     //  User kevin = new User("kevin.zhou3@student.tdsb.on.ca", "OWARC", "0808");
+//       kevin.saveFile();
+//       
+//       User edwin = new User("ZhouEnLai", "ICS4U", "42069");
+//       edwin.saveFile();
+      
+      HashMap<String, String[]> masterList = Utility.readMaster();
+    //   
+//       masterList.put("kevin.zhou3@student.tdsb.on.ca", new String[]{"OWARC", "0808"});
+         masterList.put("ZhouEnLai", new String[]{"ICS4U", "42069"});
+
+         if (masterList.get("kevin.zhou3@student.tdsb.on.ca") == null)
+         {
+            masterList.put("kevin.zhou3@student.tdsb.on.ca", new String[]{"OWARC", Utility.getAccountID()});
+            Utility.saveMaster(masterList);
+
+         }
+         else
+         {
+            System.out.println("Duplicated username");
+         }
+            
+         
+         if (masterList.get("foo") == null)
+         {
+            masterList.put("foo", new String[]{"Wind", Utility.getAccountID()});
+         }
+        
+         //Utility.saveMaster(masterList);
    }
 }
