@@ -30,7 +30,6 @@ public class User
    //this is the wallet class
    private Wallet wallet;
    
-   
    /**
    Constructor that creates a user with attributes. 
    @param   username    username of the user, can be changed 
@@ -53,6 +52,8 @@ public class User
       this.username = "";
       this.password = "";
       this.accountID = "";
+      this.wallet = null;
+
    }
    
    //getters
@@ -84,15 +85,17 @@ public class User
       return this.accountID;
    }
    
-   //setters
    /**
-   Changes the username
-   @param newUsername the new username
+   get wallet
+   @return the wallet
    */
-   public void setUsername(String newUsername)
+   public Wallet getWallet()
    {
-      this.username = newUsername;
+      return this.wallet;
    }
+   
+   //setters
+   
    /**
    Changes the password
    @param newPassword the new password
@@ -139,5 +142,4 @@ public class User
          System.out.println("An error occurred.");
       }
    }
-
 }
