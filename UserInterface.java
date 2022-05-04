@@ -30,10 +30,13 @@ public class UserInterface {
         System.out.println("u want play soccer? (1:yes)(0:no)" );
         response = sc.nextInt();
         if (response==1){
-            System.out.println("How much crypto/USD u want bet?");
-            System.out.println("How much crypto/USD u want bet?");
             Soccer soccer = new Soccer(freddyJackson,michealJackson,georgeWashingless,sierraJones,biancaBruh,teddyBez,jacksonDub,imRunning,outOf,namesToput);
-            soccer.runGame();
+            System.out.println("How much do you want to wager?");
+            double bet = sc.nextDouble();
+            sc.nextLine();
+            System.out.println("home or opposition?");
+            String selectedTeam = sc.nextLine();
+            soccer.runGame(bet, selectedTeam);
         }
 
     }
