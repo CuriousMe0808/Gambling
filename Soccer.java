@@ -33,12 +33,12 @@ public class Soccer extends Sports{
         this.opposingTeam= new Player[]{totalPlayers[5], totalPlayers[6], totalPlayers[7], totalPlayers[8], totalPlayers[9]};
 
         //for testing
-        for(int i=0; i<5; i++){
-            System.out.println(this.homeTeam[i]);
-        }
+//        for(int i=0; i<5; i++){
+//            System.out.println(this.homeTeam[i]);
+//        }
     }
 
-    public void runGame(){
+    public void runGame(double wager, String chosenTeam){
 
         //do possibility stuffs
         //players fight 10 times
@@ -61,7 +61,23 @@ public class Soccer extends Sports{
 
         System.out.println("The final score of home vs opposing is "+homeScore+" : "+opposingScore);
 
-
+        //winning
+        if (chosenTeam.equals("home") && homeScore>opposingScore){
+            System.out.println("You won the bet and gained $"+ wager );
+        }
+        else if (chosenTeam.equals("opposition") && opposingScore>homeScore){
+            System.out.println("You won the bet and gained $"+ wager );
+        }
+        //losing
+        else if (chosenTeam.equals("home") && opposingScore>homeScore){
+            System.out.println("You lost the bet and lost $"+ wager );
+        }
+        else if (chosenTeam.equals("opposition") && homeScore>opposingScore){
+            System.out.println("You lost the bet and lost $"+ wager );
+        }
+        else{
+            System.out.println("The game was tied, your wager is returned.");
+        }
         //Print out final result and give values to this.homeScore and this.opposingScore
         //print which team won or tie and then need to run wallet interaction
 
