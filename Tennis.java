@@ -82,6 +82,10 @@ public class Tennis extends Sports{
                     System.out.println("Opposing team won 1 round!");
                     System.out.println("");
                 }
+                else{
+                    System.out.println("This round is tied!");
+                    System.out.println("");
+                }
                 //Resetting points for next round
                 homePoints=0;
                 opposingPoints=0;
@@ -90,10 +94,16 @@ public class Tennis extends Sports{
             if(homeRound>opposingRound){
                 homeSet+=1;
                 System.out.println("Home team won 1 set!");
+                System.out.println("");
             }
             else if(opposingRound>homeRound){
                 opposingSet+=1;
                 System.out.println("Opposing team won 1 set!");
+                System.out.println("");
+            }
+            else{
+                System.out.println("This set is tied!");
+                System.out.println("");
             }
             //Resetting rounds for next set
             homeRound=0;
