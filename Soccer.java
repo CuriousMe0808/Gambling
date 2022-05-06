@@ -20,8 +20,6 @@ public class Soccer extends Sports{
     //Constructor to make a soccer game
     public Soccer(Player player1, Player player2, Player player3, Player player4, Player player5, Player player6,
                   Player player7,Player player8,Player player9,Player player10){
-        Random rand = new Random();
-        int randomNum = rand.nextInt(10);
         Player[] totalPlayers={player1,player2,player3,player4,player5,player6,player7,player8,player9,player10};
 
         //Shuffling the 10 players
@@ -32,30 +30,29 @@ public class Soccer extends Sports{
         this.homeTeam= new Player[]{totalPlayers[0], totalPlayers[1], totalPlayers[2], totalPlayers[3], totalPlayers[4]};
         this.opposingTeam= new Player[]{totalPlayers[5], totalPlayers[6], totalPlayers[7], totalPlayers[8], totalPlayers[9]};
 
-        //for testing
-//        for(int i=0; i<5; i++){
-//            System.out.println(this.homeTeam[i]);
-//        }
     }
 
     public void runGame(double wager, String chosenTeam){
 
-        //do possibility stuffs
         //players fight 10 times
+        //Match 2 random players against each other 10 times
         for(int i=0; i<10; i++){
             Random rand = new Random();
             int randomNum = rand.nextInt(5);
             int secondRandomNum = rand.nextInt(5);
-            if (homeTeam[randomNum].successRate(homeTeam[randomNum])>opposingTeam[randomNum].successRate(opposingTeam[randomNum])){
+            if (homeTeam[randomNum].successRate(homeTeam[randomNum])>opposingTeam[secondRandomNum].successRate(opposingTeam[secondRandomNum])){
                 homeScore +=1;
                 System.out.println("home team scored a gooall!");
             }
-            else if (homeTeam[randomNum].successRate(homeTeam[randomNum])<opposingTeam[randomNum].successRate(opposingTeam[randomNum])){
+            else if (homeTeam[randomNum].successRate(homeTeam[randomNum])<opposingTeam[secondRandomNum].successRate(opposingTeam[secondRandomNum])){
                 opposingScore +=1;
                 System.out.println("opposing team scored a gooall!");
             }
+            else if(i==9){
+                System.out.println("The players are head to head, but the game is coming to an end....");
+            }
             else{
-                System.out.println("After duking it out none of the teams were able to score");
+                System.out.println("*Soccer ball bouncing noises*");
             }
         }
 
@@ -86,7 +83,14 @@ public class Soccer extends Sports{
         winner=1;
     }
 
-    //Just testing
+    public Player[] getHomeTeam(){
+        return homeTeam;
+    }
+    public Player[] getOpposingTeam(){
+        return opposingTeam;
+    }
+
+
     public static void main(String[] args) {
 
     }

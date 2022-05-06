@@ -26,6 +26,8 @@ public class Sports {
         this.opposingTeam = opposingTeam ;
     }
 
+
+
     public void walletInteraction(int result){
         //If winner =1 win, etc etc
         //If tie give back money, else lose money.
