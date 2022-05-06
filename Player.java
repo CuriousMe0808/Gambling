@@ -15,11 +15,6 @@ public class Player {
     private String name ;
 
     /**
-     * sport the player plays
-     */
-    private String sportPlayed ;
-
-    /**
      * amount of wins the player has
      */
     private int wins ;
@@ -37,7 +32,6 @@ public class Player {
      */
     public Player(){
         this.name="";
-        this.sportPlayed="";
         this.wins=0;
         this.losses=0;
     }
@@ -46,16 +40,15 @@ public class Player {
     /**
      * Registers a player
      * @param name name
-     * @param sportPlayed sport the player plays
      * @param wins player's wins
      * @param losses player's losses
      */
-    public Player(String name, String sportPlayed, int wins, int losses){
+    public Player(String name, int wins, int losses){
         this.name= name;
-        this.sportPlayed = sportPlayed;
         this.wins= wins;
         this.losses= losses;
     }
+
 
     //getter methods
 
@@ -65,14 +58,6 @@ public class Player {
      */
     public String getName(){
         return this.name;
-    }
-
-    /**
-     * gets sport the player plays
-     * @return sport the player plays
-     */
-    public String getSportPlayed(){
-        return this.sportPlayed;
     }
 
     /**
@@ -91,7 +76,6 @@ public class Player {
         return this.losses;
     }
 
-    //NEED TO COPY SETTER METHODS
     //setter methods
 
     /**
@@ -114,16 +98,11 @@ public class Player {
     //toString
 
     public String toString() {
-        return ("Name: " + this.name + "\nSport: " + this.sportPlayed + " \nWins: " + this.wins + "\nLosses: " + this.losses + "\n");
+        return ("Name: " + this.name + " \nWins: " + this.wins + "\nLosses: " + this.losses + "\n");
     }
 
     //calculate success rate
     public double successRate(Player player){
         return player.wins / player.losses ;
-    }
-
-    public static void main(String[] args) {
-        //Put all in real main method later (User interface I guess)
-
     }
 }
