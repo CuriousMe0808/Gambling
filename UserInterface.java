@@ -53,7 +53,10 @@ public class UserInterface {
             //Gets them to pick side and runs the game
             System.out.println("home or opposition?");
             String selectedTeam = sc.nextLine();
-            soccer.runGame(bet, selectedTeam);
+            User bary = new User("garyisbad", "garyisbad1", "696969");
+            bary.getWallet().changeMoney(1000000);
+            soccer.runSoccer(bet, selectedTeam, bary);
+            System.out.println(bary.getWallet().getQtyUSD());
         }
 
 
@@ -84,7 +87,10 @@ public class UserInterface {
             //Gets them to pick side and runs the game
             System.out.println("home or opposition?");
             String selectedTeam = sc.nextLine();
-            tennis.runGame(bet, selectedTeam);
+            User jary = new User("garyisbad", "garyisbad1", "696969");
+            jary.getWallet().changeMoney(1000000);
+            tennis.runTennis(bet, selectedTeam, jary);
+            System.out.println(jary.getWallet().getQtyUSD());
         }
     }
 }
