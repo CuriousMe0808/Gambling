@@ -127,14 +127,6 @@ public class User
          writer.write("Username: " + this.username + "\n");
          writer.write("Password: " + this.password + "\n");
          writer.write("USD: $" + wallet.getQtyUSD() + "\n");
-         writer.write("BTC: " + wallet.getQtyBTC() + "\n");
-         writer.write("ETH: " + wallet.getQtyETH() + "\n");
-         writer.write("LTC: " + wallet.getQtyLTC() + "\n");
-         writer.write("DOGE: " + wallet.getQtyDOGE() + "\n");
-         writer.write("BCH: " + wallet.getQtyBCH() + "\n");
-         writer.write("XRP: " + wallet.getQtyXRP() + "\n");
-         writer.write("TRX: " + wallet.getQtyTRX() + "\n");
-         writer.write("EOS: " + wallet.getQtyEOS() + "\n");
          writer.close();
       } 
       catch (IOException e) 

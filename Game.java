@@ -16,8 +16,8 @@ class Game {
 
     /** 
     Creates a basic Game 
-    @param players[] players in the game
-    @param bet players' bets on the game
+    @param players players in the game
+    @param bets players' bets on the game
     @param gameID identification number of the game
     */ 
     public Game(User[] players, double[] bets, int gameID) {
