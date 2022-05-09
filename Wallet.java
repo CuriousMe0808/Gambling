@@ -14,13 +14,13 @@ public class Wallet
    private double qtyUSD;
 
    /**
-    Constructor that creates a wallet with attributes
-    */
-   public Wallet()
+   Constructor that creates a wallet with attributes
+   */
+   public Wallet() 
    {
-      this.qtyUSD = 0;
+       this.qtyUSD = 0;
    }
-
+  
    //getters
    /**
     get the quantity of USD
@@ -29,15 +29,14 @@ public class Wallet
    public double getQtyUSD()
    {
       return this.qtyUSD;
-   }
-
-   //setters
+   }   
    /**
-    Changes money
-    @param amount the money that is being changed in the wallet
-    */
+   Changes money in the wallet
+   @param amount the money that is being changed in the wallet
+   */
    public void changeMoney(double amount)
    {
       this.qtyUSD += amount;
-   }
-}
+   }   
+ }
+
