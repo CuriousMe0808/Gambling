@@ -5,6 +5,7 @@
  Description: Player class, registers new players that will be competing
  */
 
+//MERGE PLAYER AND SPORTS
 public class Player {
     // attributes
 
@@ -12,11 +13,6 @@ public class Player {
      * player's name
      */
     private String name ;
-
-    /**
-     * sport the player plays
-     */
-    private String sportPlayed ;
 
     /**
      * amount of wins the player has
@@ -28,10 +24,6 @@ public class Player {
      */
     private int losses ;
 
-    /**
-     * fun facts about the player
-     */
-    private String funFact ;
 
     //constructors
 
@@ -40,27 +32,23 @@ public class Player {
      */
     public Player(){
         this.name="";
-        this.sportPlayed="";
         this.wins=0;
         this.losses=0;
-        this.funFact="";
     }
 
+    //MERGED
     /**
      * Registers a player
      * @param name name
-     * @param sportPlayed sport the player plays
      * @param wins player's wins
      * @param losses player's losses
-     * @param funFact player's fun fact
      */
-    public Player(String name, String sportPlayed, int wins, int losses, String funFact){
+    public Player(String name, int wins, int losses){
         this.name= name;
-        this.sportPlayed = sportPlayed;
         this.wins= wins;
         this.losses= losses;
-        this.funFact= funFact;
     }
+
 
     //getter methods
 
@@ -70,14 +58,6 @@ public class Player {
      */
     public String getName(){
         return this.name;
-    }
-
-    /**
-     * gets sport the player plays
-     * @return sport the player plays
-     */
-    public String getSportPlayed(){
-        return this.sportPlayed;
     }
 
     /**
@@ -94,14 +74,6 @@ public class Player {
      */
     public int getLosses(){
         return this.losses;
-    }
-
-    /**
-     * gets player's fun fact
-     * @return player's fun fact
-     */
-    public String getFunFact(){
-        return this.funFact;
     }
 
     //setter methods
@@ -123,22 +95,14 @@ public class Player {
         this.losses = newLosses;
     }
 
-    /**
-     * changes player's fun fact
-     * @param newFunFact new fun fact
-     */
-    public void setFunFact(String newFunFact){
-        this.funFact = newFunFact;
-    }
-
     //toString
 
     public String toString() {
-        return ("Name: " + this.name + "\nSport: " + this.sportPlayed + " \nWins: " + this.wins + "\nLosses: " + this.losses + "\nFun fact: "+ this.funFact + "\n");
+        return ("Name: " + this.name + " \nWins: " + this.wins + "\nLosses: " + this.losses + "\n");
     }
 
-    public static void main(String[] args) {
-        Player freddyJackson = new Player("Freddy Jackson", "Soccer",17,38,"Lost all five of his kids in a divorce battle");
-        System.out.println(freddyJackson.toString());
+    //calculate success rate
+    public double successRate(Player player){
+        return player.wins / player.losses ;
     }
 }
