@@ -5,7 +5,6 @@
  Description: Player class, registers new players that will be competing
  */
 
-//MERGE PLAYER AND SPORTS
 public class Player {
     // attributes
 
@@ -36,7 +35,6 @@ public class Player {
         this.losses=0;
     }
 
-    //MERGED
     /**
      * Registers a player
      * @param name name
@@ -49,9 +47,7 @@ public class Player {
         this.losses= losses;
     }
 
-
     //getter methods
-
     /**
      * gets name
      * @return name of player
@@ -105,4 +101,7 @@ public class Player {
     public double successRate(Player player){
         return player.wins / player.losses ;
     }
+
+    //change team
+
 }

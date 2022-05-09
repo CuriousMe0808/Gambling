@@ -39,16 +39,7 @@ public class UserInterface {
             sc.nextLine();
 
             //Prints out the players on both teams
-            Player[] tempHome = soccer.getHomeTeam();
-            System.out.println("Home team players:");
-            for(int i=0; i<5; i++){
-                System.out.println(tempHome[i]);
-            }
-            Player[] tempOpposition = soccer.getOpposingTeam();
-            System.out.println("Opposition team players:");
-            for(int i=0; i<5; i++){
-                System.out.println(tempOpposition[i]);
-            }
+            System.out.println(soccer.toString());
 
             //Gets them to pick side and runs the game
             System.out.println("home or opposition?");
@@ -72,17 +63,8 @@ public class UserInterface {
             double bet = sc.nextDouble();
             sc.nextLine();
 
-            //Prints out the players on both teams
-            Player[] tempHome = tennis.getHomeTeam();
-            System.out.println("Home team players:");
-            for(int i=0; i<5; i++){
-                System.out.println(tempHome[i]);
-            }
-            Player[] tempOpposition = tennis.getOpposingTeam();
-            System.out.println("Opposition team players:");
-            for(int i=0; i<5; i++){
-                System.out.println(tempOpposition[i]);
-            }
+            //Prints out players on both teams
+            System.out.println(tennis.toString());
 
             //Gets them to pick side and runs the game
             System.out.println("home or opposition?");
