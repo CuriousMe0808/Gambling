@@ -16,7 +16,7 @@ public class Wallet
    */
    public Wallet() 
    {
-       this.qtyUSD = 0;
+       qtyUSD = 0;
    }
    
    //getters
@@ -26,7 +26,7 @@ public class Wallet
    */
    public double getQtyUSD()
    {
-      return this.qtyUSD;
+      return qtyUSD;
    }
    
    /**
@@ -35,6 +35,15 @@ public class Wallet
    */
    public void changeMoney(double amount)
    {
-      this.qtyUSD += amount;
-   }   
+      qtyUSD += amount;
+   }
+   
+   /**
+   Displays the wallet information
+   @return the money amount in the wallet
+   */
+   public String toString()
+   {
+      return Double.toString(qtyUSD);
+   } 
  }
