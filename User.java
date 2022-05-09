@@ -28,7 +28,7 @@ public class User
    /**
    AccountID of the user
    */
-   private String accountID;
+   private int accountID;
    
    //this is the wallet class
    private Wallet wallet;
@@ -39,7 +39,7 @@ public class User
    @param   password    password of the user, can be changed
    @param   accountID   accountID of the user, can NOT be changed
    */
-   public User(String username, String password, String accountID)
+   public User(String username, String password, int accountID)
    {
       this.username = username;
       this.password = password;
@@ -54,7 +54,7 @@ public class User
    {
       this.username = "";
       this.password = "";
-      this.accountID = "";
+      this.accountID = 0;
       this.wallet = null;
 
    }
@@ -83,7 +83,7 @@ public class User
    get the accountID
    @return the accountID
    */
-   public String getAccountID()
+   public int getAccountID()
    {
       return this.accountID;
    }
