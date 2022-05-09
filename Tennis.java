@@ -14,8 +14,8 @@ public class Tennis extends Sports{
     private int opposingRound=0;
     private int homePoints=0;
     private int opposingPoints=0;
-    private int homeSet=0;
-    private int opposingSet=0;
+    private int homeScore=0;
+    private int opposingScore=0;
 
 
     //Constructor to make a tennis game
@@ -35,7 +35,7 @@ public class Tennis extends Sports{
         //5 rounds each set (Bo3)
         //4 points to win 1 round
         for(int i=0; i<3; i++){
-            if (homeSet==2||opposingSet==2){
+            if (homeScore==2||opposingScore==2){
                 break; //Break cuz of Bo2
             }
             for(int j=0; j<5; j++) {
@@ -83,12 +83,12 @@ public class Tennis extends Sports{
             }
             //Updating Sets won
             if(homeRound>opposingRound){
-                homeSet+=1;
+                homeScore+=1;
                 System.out.println("Home team won 1 set!");
                 System.out.println("");
             }
             else if(opposingRound>homeRound){
-                opposingSet+=1;
+                opposingScore+=1;
                 System.out.println("Opposing team won 1 set!");
                 System.out.println("");
             }
@@ -102,23 +102,23 @@ public class Tennis extends Sports{
         }
 
 
-        System.out.println("The final score of home vs opposing sets won is "+homeSet+" : "+opposingSet);
+        System.out.println("The final score of home vs opposing sets won is "+homeScore+" : "+opposingScore);
 
         //winning
-        if (chosenTeam.equals("home") && homeSet>opposingSet){
+        if (chosenTeam.equals("home") && homeScore>opposingScore){
             result = 2;
             System.out.println("You won the bet and gained $"+ wager );
         }
-        else if (chosenTeam.equals("opposition") && opposingSet>homeSet){
+        else if (chosenTeam.equals("opposition") && opposingScore>homeScore){
             result = 2;
             System.out.println("You won the bet and gained $"+ wager );
         }
         //losing
-        else if (chosenTeam.equals("home") && opposingSet>homeSet){
+        else if (chosenTeam.equals("home") && opposingScore>homeScore){
             result = 0;
             System.out.println("You lost the bet and lost $"+ wager );
         }
-        else if (chosenTeam.equals("opposition") && homeSet>opposingSet){
+        else if (chosenTeam.equals("opposition") && homeScore>opposingScore){
             result = 0;
             System.out.println("You lost the bet and lost $"+ wager );
         }
