@@ -86,7 +86,7 @@ public class Sports {
         System.out.println(user.getUsername()+" is cheering for "+team);
     }
 
-    //remove player off team (dependant on player class)(my class)
+    //change player on the team (dependant on player class)(my class)
     public void replacePlayer(Player player, Player newPlayer){
         for (int i=0;i<5;i++){
             if(homeTeam[i]==player){
