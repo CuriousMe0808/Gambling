@@ -7,6 +7,7 @@ Description: user information
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashMap;
 
 /**
 a class to hold user information
@@ -29,8 +30,9 @@ public class User
    AccountID of the user
    */
    private String accountID;
-   
-   //this is the wallet class
+   /**
+   this is the wallet class
+   */
    private Wallet wallet;
    
    /**
@@ -119,7 +121,7 @@ public class User
          File mySave = new File(fileName);
          if (mySave.createNewFile()) 
          {
-            System.out.println("File created: " + mySave.getName());
+            System.out.println("File created: " + mySave.getName() + "\n");
          } 
          else 
          {
@@ -146,4 +148,17 @@ public class User
    {
       return "Username: " + username + "\nAccount ID: " + accountID;
    }
+   
+   /**
+   Main method to test adding new users
+   */
+   public static void main(String[] args)
+   {      
+      HashMap<String, String[]> masterList = Utility.readMaster();
+      
+      Utility.addNewUser(masterList, "Kevin@student.tdsb.on.ca", "OWARC");
+      Utility.addNewUser(masterList, "ZhouEnLai", "ICS4U");
+      Utility.addNewUser(masterList, "Kms", "from ap math class with petres");
+   }
+
 }

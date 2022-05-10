@@ -7,13 +7,25 @@ Description: Utility Class providing various tools
 import java.io.*;
 import java.util.*;
 
+/**
+a class to provide various tools
+*/
 public final class Utility
 {
    //variables
+   /** Name of the file that holds all user information*/
    private final static String MATER_FILE_NAME = "MasterAccount.txt";
+   
+   /** token for username*/
    private final static String USERNAME_TOKEN = "Username";
+   
+   /** token for password*/
    private final static String PASSWORD_TOKEN = "Password";
+   
+   /** token for accountID*/
    private final static String ACCOUNTID_TOKEN = "AccountID";
+   
+   /** start of the counter for an id*/
    private static long idCounter = 0;
    
    /**
@@ -32,9 +44,7 @@ public final class Utility
    public static HashMap<String, String[]> readMaster()
    {     
       //variables
-      HashMap<String, String[]> masterList = new HashMap<String, String[]>();
-      //HashMap uses password as key, and value is the String array with password and accountID.
-         
+      HashMap<String, String[]> masterList = new HashMap<String, String[]>();      //HashMap uses password as key, and value is the String array with password and accountID.
       String username, password, accountID, token, line;
       username = "";
       password = "";
@@ -81,7 +91,7 @@ public final class Utility
              System.out.println("An error occurred.");
          }
       }
-      idCounter = masterList.size();
+      idCounter = masterList.size(); //gets number of accounts through the size of the hashmap masterlist
       return masterList;
    }
    
@@ -137,6 +147,7 @@ public final class Utility
          masterList.put(username, new String[]{password, accountID});
          Utility.saveMaster(masterList);
          User newUser = new User(username, password, accountID);
+         System.out.println("Created: " + newUser.toString());
          newUser.saveFile();
       }
       else
@@ -144,5 +155,83 @@ public final class Utility
          System.out.println("Duplicated username: " + username);
       }
       return masterList;
+   }
+   
+   /**
+   Check if the input string is an integer.
+   @return true if integer, false if not
+   */
+   public static boolean isNumeric(String s) 
+   {
+      if (s == null)
+         return false;
+         
+      Scanner scan = new Scanner(System.in);
+
+      try
+      {
+         double d = Integer.parseInt(s);
+      } 
+      catch (Exception e) 
+      {   
+         return false;
+      }
+      return true;
+   }
+   
+   /**
+   Get the bet money that user input to play the game
+   @param money the amount of money that user has in vallet
+   @param leastBet the amount of minimum money that user has to bet
+   @return the bet money that user input
+   */
+   public static int getBet(double money, int leastBet) 
+   {
+      boolean validNumber = false;
+      int bet = 0;
+      String userInput;
+      Scanner scan = new Scanner(System.in);
+   
+      System.out.println("You have $" + money + " available.");
+   
+      do 
+      {        
+         System.out.println("How much to bet?");
+         userInput = scan.nextLine();
+         
+         // check if the user input is an integer
+         // if not, display a message asking user to input again.
+         if (isNumeric(userInput))
+         {
+            bet = Integer.parseInt(userInput);
+         
+            // check if the bet is less than the money in wallet
+            // if less, display a message asking user to input again.
+            if (Double.compare(bet, money) > 0) 
+            {
+               System.out.println("Not enough money to bet. You only have $" + money + " to bet.");				
+            }
+            
+            // check if the bet is less than the minimum money to bet
+            // if less, display a message asking user to input again.
+            else if (bet < leastBet)
+            {
+               System.out.println("Please input an integer number " + leastBet + " or more.");            
+            } 
+            
+            // all good, the bet number is valid
+            else
+            {
+               validNumber = true;
+            } 
+         }
+         else 
+         {
+            System.out.println("Please input an integer number " + leastBet + " or more.");
+         }
+      } 
+      while (!validNumber);
+      
+      return bet;
    }
 }
