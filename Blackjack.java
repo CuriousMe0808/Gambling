@@ -6,10 +6,10 @@ public class Blackjack extends Game {
     static final int CARDS = 52, CARD_TYPES = 13,  GOAL = 21;
     static final int ACE = 1, JACK = 11, QUEEN = 12, KING = 13;
 
-	public Blackjack(User[] players, double[] bets, int gameID) {
-		super(players, bets, gameID);
-		takeMoney();
-	}
+    public Blackjack(User[] players, double[] bets, int gameID) {
+	super(players, bets, gameID);
+	takeMoney();
+    }
 
     public void playGame() {
         //variables and array declaration
