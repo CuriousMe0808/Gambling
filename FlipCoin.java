@@ -226,5 +226,4 @@ public class FlipCoin extends Game
       // Display who are playing this game
       System.out.println("\n" + gameFlipCoin.toString());    
    }
-
 }
