@@ -92,7 +92,6 @@ public class Player {
     }
 
     //toString
-
     public String toString() {
         return ("Name: " + this.name + " \nWins: " + this.wins + "\nLosses: " + this.losses + "\n");
     }
@@ -102,6 +101,14 @@ public class Player {
         return player.wins / player.losses ;
     }
 
-    //change team
+    //cheer for a player(if we implement a chat feature)(dependant on user class)(other class)
+    public void cheerForPlayer(User user){
+        System.out.println(user.getUsername()+" is cheering for "+this.name);
+    }
 
+    public static void main(String[] args) {
+        Player freddyJackson = new Player("Freddy Jackson",17,38);
+        User jary = new User("garyisbad", "garyisbad1", "696969");
+        freddyJackson.cheerForPlayer(jary);
+    }
 }

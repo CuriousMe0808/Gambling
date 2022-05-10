@@ -24,6 +24,7 @@ public class Tennis extends Sports{
         super(player1, player2, player3, player4, player5, player6, player7,player8,player9,player10);
     }
 
+    //Runs the game (dependant on user class)(other class)
     public void runTennis(double wager, String chosenTeam, User gambler){
         Player[] homeTeam=getHomeTeam();
         Player[] opposingTeam=getOpposingTeam();
@@ -130,8 +131,69 @@ public class Tennis extends Sports{
         wallet.changeMoney(wager * result);
     }
 
-    //Just testing
+    //Getters
+    public int getHomeRound(){
+        return homeRound;
+    }
+    public int getOpposingRound(){
+        return opposingRound;
+    }
+    public int getHomePoints(){
+        return opposingRound;
+    }
+    public int getOpposingPoints(){
+        return opposingRound;
+    }
+
+    //Setters
+    public void setHomeRound(int newHomeRound){
+        this.homeRound= newHomeRound;
+    }
+    public void setOpposingRound(int newOpposingRound){
+        this.opposingRound= newOpposingRound;
+    }
+    public void setHomePoints(int newHomePoints){
+        this.homePoints= newHomePoints;
+    }
+    public void setOpposingPoints(int newOpposingPoints){
+        this.opposingPoints= newOpposingPoints;
+    }
+
+    //Testing
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in) ;
+
+        //Demonstrating runTennis method
+        //Creates players
+        Player freddyJackson = new Player("Freddy Jackson",17,38);
+        Player michealJackson = new Player("Micheal Jackson",21,38);
+        Player georgeWashingless = new Player("George Washingless ",52,21);
+        Player sierraJones = new Player("Sierra Jones",31,24);
+        Player biancaBruh = new Player("Bianca Bruh",51,26);
+        Player evan = new Player("Evan",69,21);
+        Player gary = new Player("Gary",21,69);
+        Player imRunning = new Player("Im Running",43,25);
+        Player outOf = new Player("Out Of",2,32);
+        Player namesToput = new Player("Names Toput",58,21);
+
+        //Creating tennis game with 10 "players"
+        Tennis tennis = new Tennis(freddyJackson,michealJackson,georgeWashingless,sierraJones,biancaBruh,evan,gary,imRunning,outOf,namesToput);
+
+        //Gets their wager
+        System.out.println("How much do you want to wager?");
+        double bet = sc.nextDouble();
+        sc.nextLine();
+
+        //Prints out players on both teams
+        System.out.println(tennis.toString());
+
+        //Gets them to pick side and runs the game
+        System.out.println("home or opposition?");
+        String selectedTeam = sc.nextLine();
+        User jary = new User("garyisbad", "garyisbad1", "696969");
+        jary.getWallet().changeMoney(1000000);
+        tennis.runTennis(bet, selectedTeam, jary);
+        System.out.println("New balance: "+ jary.getWallet().getQtyUSD());
 
     }
 }
