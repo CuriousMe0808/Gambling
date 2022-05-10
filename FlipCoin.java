@@ -134,8 +134,7 @@ public class FlipCoin extends Game
    public String toString()
    {      
       return "----Flip Coin----\nUsers: " + super.getPlayers();
-   }
-   
+   }   
    /**
    Main method to test features of the game of FlipCoin
    */
@@ -188,7 +187,7 @@ public class FlipCoin extends Game
       }
       while (validInput == false);  //keep asking user to input, if not 1 or 2
       validInput = false;
-
+   
       // ask user to input the number in a row for the paricular toss
       do
       {
