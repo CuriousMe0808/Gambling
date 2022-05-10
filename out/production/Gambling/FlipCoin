@@ -30,30 +30,10 @@ public class FlipCoin extends Game
 
    // private attributes
    /** number to represent the desired result: head = 1; tail = 2 */
-   private int toss; // only can be read within the class
+   private int toss; 
    
    /** number of times that head or tail appears in a row */
-   private int rows; // only can be read within the class
-   
-   /**
-   setters
-   */
-   /** set toss for the game.
-   @param tossInput an integer represents head = 1, tail = 2
-   */
-   public void setToss(int tossInput)
-   {
-      this.toss = tossInput;
-   }
-   
-   /**
-   set the number in a row for the coin, 1 or bigger
-   @param rowsInput an integer for number of times in a row for a toss.
-   */
-   public void setRows(int rowsInput)
-   {
-      this.rows = rowsInput;
-   }
+   private int rows;
    
    /**
 	Returns a randomly generated integer, 1 or 2, representing head and tail
@@ -103,7 +83,6 @@ public class FlipCoin extends Game
          }
          else
          {
-            // multiply time increased by 1
             multiply++;
             
             // if number in a row equals the number of flips, stop multiplying
@@ -128,15 +107,85 @@ public class FlipCoin extends Game
    }
    
    /**
-   To print out the users who are playing the game
-   @retrun the name of the game, and user names
+   Check if the input string is an integer.
+   @return true if integer, false if not
    */
-   public String toString()
-   {      
-      return "----Flip Coin----\nUsers: " + super.getPlayers();
-   }   
+   public static boolean isNumeric(String s) 
+   {
+      if (s == null)
+         return false;
+         
+      Scanner scan = new Scanner(System.in);
+
+      try
+      {
+         double d = Integer.parseInt(s);
+      } 
+      catch (Exception e) 
+      {   
+         return false;
+      }
+      return true;
+   }
+   
    /**
-   Main method to test features of the game of FlipCoin
+   Get the bet money that user input to play the game
+   @param money the amount of money that user has in vallet
+   @param leastBet the amount of minimum money that user has to bet
+   @return the bet money that user input
+   */
+   public static int getBet(double money, int leastBet) 
+   {
+      boolean validNumber = false;
+      int bet = 0;
+      String userInput;
+      Scanner scan = new Scanner(System.in);
+   
+      System.out.println("You have $" + money + " available.");
+   
+      do 
+      {        
+         System.out.println("How much to bet?");
+         userInput = scan.nextLine();
+         
+         // check if the user input is an integer
+         // if not, display a message asking user to input again.
+         if (isNumeric(userInput))
+         {
+            bet = Integer.parseInt(userInput);
+         
+            // check if the bet is less than the money in wallet
+            // if less, display a message asking user to input again.
+            if (Double.compare(bet, money) > 0) 
+            {
+               System.out.println("Not enough money to bet. You only have $" + money + " to bet.");				
+            }
+            
+            // check if the bet is less than the minimum money to bet
+            // if less, display a message asking user to input again.
+            else if (bet < leastBet)
+            {
+               System.out.println("Please input an integer number" + leastBet + " or more.");            
+            } 
+            
+            // all good, the bet number is valid
+            else
+            {
+               validNumber = true;
+            } 
+         }
+         else 
+         {
+            System.out.println("Please input an integer number " + leastBet + " or more.");
+         }
+      } 
+      while (!validNumber);
+      
+      return bet;
+   }
+
+   /**
+   The main method for testing the game of FlipCoin.
    */
    public static void main(String[] args)
    {  
@@ -164,7 +213,7 @@ public class FlipCoin extends Game
       FlipCoin gameFlipCoin = new FlipCoin(users, bets, 23);     
       
       // get the bet money from user input
-      bet = Utility.getBet(money, LEAST_BET);
+      bet = getBet(money, LEAST_BET);
       
       // update the bet money for this user
       gameFlipCoin.updateBet(u1.getUsername(), bet);
@@ -176,32 +225,32 @@ public class FlipCoin extends Game
       do
       {
          System.out.println("What will you bet: head or tail? 1 for head, 2 for tail");
-         choice = scan.nextLine();
+         choice = scan.next();
                
          if (choice.equals("1") || choice.equals("2")) 
          {
             // update the toss desired to be the user input
-            gameFlipCoin.setToss(Integer.parseInt(choice));
+            gameFlipCoin.toss = Integer.parseInt(choice);
             validInput = true;            
          }
       }
       while (validInput == false);  //keep asking user to input, if not 1 or 2
       validInput = false;
-   
+
       // ask user to input the number in a row for the paricular toss
       do
       {
          System.out.println("How many times in a row?");
-         choice = scan.nextLine();
+         choice = scan.next();
            
-         if (Utility.isNumeric(choice))
+         if (isNumeric(choice))
          {
             int input = Integer.parseInt(choice);
             
             if (input > 0)
             {
                // update the number of rows to be the user input
-               gameFlipCoin.setRows(Integer.parseInt(choice));
+               gameFlipCoin.rows = Integer.parseInt(choice);
                validInput = true;
             }
             else 
@@ -221,9 +270,6 @@ public class FlipCoin extends Game
       
       // calls the method of superclass, to put the winning money into user's wallet.     
       gameFlipCoin.returnMoney();      
-      System.out.println("Now you have $" + u1.getWallet().getQtyUSD());
-      
-      // Display who are playing this game
-      System.out.println("\n" + gameFlipCoin.toString());    
+      System.out.println("Now you have $" + u1.getWallet().getQtyUSD());    
    }
 }
