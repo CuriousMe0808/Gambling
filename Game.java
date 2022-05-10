@@ -1,4 +1,4 @@
-class Game {
+public class Game {
 	/* Attributes */
 
 	/** list of players in the game */ 
@@ -16,18 +16,15 @@ class Game {
 
     /** 
     Creates a basic Game 
-    @param players players in the game
-    @param bets players' bets on the game
+    @param players[] players in the game
+    @param bet players' bets on the game
     @param gameID identification number of the game
     */ 
     public Game(User[] players, double[] bets, int gameID) {
         this.players = players;
 		this.bets = bets;
 		this.gameID = gameID; 
-		for (int i = 0; i < this.players.length; i++) {
-			Wallet wallet = this.players[i].getWallet();
-			wallet.changeMoney(-this.bets[i]);
-		}
+		
     }
 
 	//Accessors
@@ -36,12 +33,8 @@ class Game {
 	Gets the list of players' usernames as a string
 	@return the players' usernames, space separated 
 	*/ 
-	public String getPlayers() {
-		String res = "";
-		for (int i = 0; i < this.players.length; i++) {
-			res = res + this.players[i].getUsername() + " "; 
-		}
-		return res;
+	public User[] getPlayers() {
+		return this.players;
 	}
 
 	/**
@@ -76,6 +69,15 @@ class Game {
 	}
 
 	/**
+	Takes the players bets from their wallets
+	*/
+	public void takeMoney() {
+		for (int i = 0; i < this.players.length; i++) {
+			Wallet wallet = this.players[i].getWallet();
+			wallet.changeMoney(-this.bets[i]);
+		}
+	}
+	/**
 	Returns the players winning to their respective wallets
 	*/ 
 	public void returnMoney() {
@@ -84,5 +86,4 @@ class Game {
 			wallet.changeMoney(this.bets[i]);
 		}
 	}
-	
 }
