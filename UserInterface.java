@@ -1,14 +1,13 @@
 import java.util.*;
 import java.io.*;
-public class UserInterface {
+public class Main {
 	static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-
 		boolean quit = false, badData = true,loggedIn = false;;
-		int input = -1, idx = 1;
+		int input = -1, idx = 1; 
 		double qty;
 		char choice;
-		User curUser = new User();
+		User curUser = new User(); 
 		System.out.println("Welcome to Gary's Gambling Garden!");
 		while (!quit) {
 			if (!loggedIn) {
@@ -42,7 +41,7 @@ public class UserInterface {
 			System.out.println();
 			if (input == 1) {
 				if (loggedIn) {
-					System.out.println("Logging out as " + curUser.getUsername());
+					System.out.println("Logging out as " + curUser.getUsername()); 
 				}
 				curUser = login();
 				loggedIn = true;
@@ -52,7 +51,7 @@ public class UserInterface {
 					System.out.println("Please login first!");
 				}
 				else {
-					System.out.println("Current Balance: " + curUser.getWallet().getQtyUSD());
+					System.out.println("Current Balance: " + curUser.getWallet().getQtyUSD()); 
 				}
 			}
 			else if (input == 3) {
@@ -70,7 +69,7 @@ public class UserInterface {
 		            		System.out.println("Please enter a number!");
 						}
 		        	}
-					curUser.getWallet().changeMoney(qty);
+					curUser.getWallet().changeMoney(qty); 
 					curUser.saveFile();
 				}
 			}
@@ -87,12 +86,12 @@ public class UserInterface {
 				System.out.println("B. Slots");
 				System.out.println("C. Roulette");
 				System.out.println("D. Flip Coin");
-				System.out.println("E. Quit");
+				System.out.println("E. Quit"); 
 				while (true) {
-					System.out.print("Please enter A, B, C, D, or E");
+					System.out.print("Please enter A, B, C, D, or E ");
 					choice = sc.nextLine().charAt(0);
 					if (choice >= 'A' && choice <= 'E') {
-						break;
+						break; 
 					}
 				}
 				if (choice == 'E') {
@@ -108,7 +107,7 @@ public class UserInterface {
 				double[] bets = {bet};
 				if (choice == 'A') {
 					Blackjack game = new Blackjack(players, bets, idx++);
-					game.playGame();
+					game.playGame();	
 				}
 				else if (choice == 'B') {
 					SlotMachine game = new SlotMachine(players, bets, idx++);
@@ -123,14 +122,14 @@ public class UserInterface {
 					game.playGame();
 				}
 				curUser.saveFile();
-
+				
 			}
 			else if (input == 6) {
 				if (!loggedIn) {
 					System.out.println("Please sign up/log in first!");
 					continue;
 				}
-
+				
 				//Making Players
 		        Player freddyJackson = new Player("Freddy Jackson",17,38);
 		        Player michealJackson = new Player("Micheal Jackson",21,38);
@@ -152,7 +151,8 @@ public class UserInterface {
 					}
 				}
 				if (sportType.equals("S")) {
-					Soccer soccer = new Soccer(freddyJackson,michealJackson,georgeWashingless,sierraJones,biancaBruh,evan,gary,imRunning,outOf,namesToput);
+					Soccer soccer = new Soccer(freddyJackson,michealJackson,georgeWashingless,sierraJones,biancaBruh,evan,gary,imRunning,outOf,namesToput);			
+					System.out.println(soccer.toString());
 					System.out.print("What would you like to bet? ");
 					double bet = Double.parseDouble(sc.nextLine());
 					while (bet > curUser.getWallet().getQtyUSD()) {
@@ -171,7 +171,7 @@ public class UserInterface {
 					soccer.runSoccer(bet, team, curUser);
 				}
 				else {
-					Tennis tennis = new Tennis(freddyJackson,michealJackson,georgeWashingless,sierraJones,biancaBruh,evan,gary,imRunning,outOf,namesToput);
+					Tennis tennis = new Tennis(freddyJackson,michealJackson,georgeWashingless,sierraJones,biancaBruh,evan,gary,imRunning,outOf,namesToput);			
 					System.out.print("What would you like to bet? ");
 					double bet = Double.parseDouble(sc.nextLine());
 					while (bet > curUser.getWallet().getQtyUSD()) {
@@ -179,6 +179,7 @@ public class UserInterface {
 						bet = Double.parseDouble(sc.nextLine());
 					}
 					System.out.println("Which team are you betting on?");
+					System.out.println(tennis.toString());
 					String team;
 					while (true) {
 						System.out.print("Please type \"home\" for the home team or \"opposition\" for the opposing team");
@@ -191,7 +192,7 @@ public class UserInterface {
 				}
 				curUser.saveFile();
 
-
+				
 			}
 			System.out.println();
     	}
@@ -201,27 +202,27 @@ public class UserInterface {
 		String username = sc.nextLine();
 		System.out.print("Enter your password: ");
 		String password = sc.nextLine();
-		String accountID = username+"@"+password;
+		String accountID = username+"@"+password;  
 		String fileName = "User" + accountID + ".txt";
 		double qtyUSD;
-		User newUser;
+		User newUser; 
 		try {
 			Scanner fs = new Scanner(new File(fileName));
 			String useless = fs.nextLine();
 			useless = fs.nextLine();
-			qtyUSD = Double.parseDouble(fs.nextLine());
+			qtyUSD = Double.parseDouble(fs.nextLine()); 
 			newUser = new User(username, password, accountID);
-			newUser.getWallet().changeMoney(qtyUSD);
+			newUser.getWallet().changeMoney(qtyUSD); 
 			System.out.println("Logged in.");
 		}
 		catch (IOException e) {
 			System.out.println("Account does not exist. Creating account... ");
-			accountID = username+"@"+password;
+			accountID = username+"@"+password;  
 			newUser = new User(username, password, accountID);
 			newUser.saveFile();
 			System.out.println("Account created.");
 		}
-		return newUser;
+		return newUser; 
 	}
 
 	
