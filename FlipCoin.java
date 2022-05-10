@@ -138,12 +138,12 @@ public class FlipCoin extends Game
    /**
    Main method to test features of the game of FlipCoin
    */
-   public static void main(String[] args)
+   public void playGame()
    {  
       // Initialize variables
-      final int INITIAL_MONEY = 1000;
       final int LEAST_BET = 20;
-      int money = INITIAL_MONEY;
+	  double[] wagers = getBets();
+      double money = wagers[0];
       int return_money = 0;
       int bet = 0;
       Scanner scan = new Scanner(System.in);
