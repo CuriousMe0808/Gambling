@@ -5,7 +5,6 @@
  Description: Player class, registers new players that will be competing
  */
 
-//MERGE PLAYER AND SPORTS
 public class Player {
     // attributes
 
@@ -36,7 +35,6 @@ public class Player {
         this.losses=0;
     }
 
-    //MERGED
     /**
      * Registers a player
      * @param name name
@@ -49,9 +47,7 @@ public class Player {
         this.losses= losses;
     }
 
-
     //getter methods
-
     /**
      * gets name
      * @return name of player
@@ -96,7 +92,6 @@ public class Player {
     }
 
     //toString
-
     public String toString() {
         return ("Name: " + this.name + " \nWins: " + this.wins + "\nLosses: " + this.losses + "\n");
     }
@@ -104,5 +99,16 @@ public class Player {
     //calculate success rate
     public double successRate(Player player){
         return player.wins / player.losses ;
+    }
+
+    //cheer for a player(if we implement a chat feature)(dependant on user class)(other class)
+    public void cheerForPlayer(User user){
+        System.out.println(user.getUsername()+" is cheering for "+this.name);
+    }
+
+    public static void main(String[] args) {
+        Player freddyJackson = new Player("Freddy Jackson",17,38);
+        User jary = new User("garyisbad", "garyisbad1", "696969");
+        freddyJackson.cheerForPlayer(jary);
     }
 }
