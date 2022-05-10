@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class Main {
+public class UserInterface.java {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 		boolean quit = false, badData = true,loggedIn = false;;
