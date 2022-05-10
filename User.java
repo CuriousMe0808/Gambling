@@ -8,6 +8,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+a class to hold user information
+*/
 public class User
 {
    //attributes
@@ -106,7 +109,7 @@ public class User
    }
    
    /**
-   Saves user's information (______)
+   Saves user's information
    */
    public void saveFile()
    {
@@ -133,5 +136,14 @@ public class User
       {
          System.out.println("An error occurred.");
       }
+   }
+   
+   /**
+   Displays the user information
+   @return user name and account ID
+   */
+   public String toString()
+   {
+      return "Username: " + username + "\nAccount ID: " + accountID;
    }
 }
