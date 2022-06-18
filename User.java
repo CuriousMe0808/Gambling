@@ -119,14 +119,6 @@ public class User
       {
          String fileName = "User" + accountID + ".txt";
          File mySave = new File(fileName);
-         if (mySave.createNewFile()) 
-         {
-            System.out.println("File created: " + mySave.getName() + "\n");
-         } 
-         else 
-         {
-            System.out.println("File already exists.");
-         }
          
          Writer writer = new BufferedWriter(new FileWriter(fileName));
          writer.write("Username: " + this.username + "\n");
